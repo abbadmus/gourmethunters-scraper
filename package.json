@@ -4,8 +4,8 @@
   "description": "",
   "main": "indext.js",
   "scripts": {
-    "start": "node index.js",
-    "gourme": "node gourmethunters-scraper.js"
+    "start": "node gourmethunters-scraper.js",
+    "gourme": "node index.js"
   },
   "keywords": [],
   "author": "",
