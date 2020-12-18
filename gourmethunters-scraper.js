@@ -4,7 +4,7 @@ const Sheet = require("./google-conn");
 const _ = require("lodash");
 const fs = require("fs").promises;
 const sleep = require("util").promisify(setTimeout);
-const moment = require("moment");
+// const moment = require("moment");
 
 log = console.log;
 
@@ -283,9 +283,9 @@ const productDetails = async (urls) => {
 
   // //   await sheet.headerValues(["hello", "email"]);
 
-  date = moment().format("MMMM Do YYYY, h:mm:ss a").replace(/:/g, "-");
+  // date = moment().format("MMMM Do YYYY, h:mm:ss a").replace(/:/g, "-");
 
-  // new Date().getMinutes()
+  date = new Date().getMinutes();
 
   rawIndex = await sheet.addSheet(`gourmethunters ${date}`, fields);
 
