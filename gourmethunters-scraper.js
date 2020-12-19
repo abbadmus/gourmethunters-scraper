@@ -75,7 +75,7 @@ const getLinks = async (url, i) => {
 };
 
 const getAllLinks = async (url) => {
-  let i = 222;
+  let i = 1;
   let allLinks = [];
 
   while (true) {
@@ -267,12 +267,6 @@ const productDetails = async (urls) => {
 };
 
 (async function () {
-  // google sheet setup
-  log("google sheet");
-  const sheet = new Sheet();
-  log("loadCredentials");
-  await sheet.loadCredentials();
-
   const allLinks = await eachCategory(categoryToBeScrape);
 
   const allProductDetails = await productDetails(allLinks);
@@ -283,16 +277,19 @@ const productDetails = async (urls) => {
 
   //   log(allProductDetails);
 
+  // google sheet setup
+
+  const sheet = new Sheet();
+  await sheet.loadCredentials();
+
   // //   await sheet.headerValues(["hello", "email"]);
 
   // date = moment().format("MMMM Do YYYY, h:mm:ss a").replace(/:/g, "-");
 
   date = new Date().getMinutes();
 
-  log("rawIndex");
   rawIndex = await sheet.addSheet(`gourmethunters ${date}`, fields);
 
-  log("addRows");
   await sheet.addRows(allProductDetails, rawIndex);
   log("saving to google sheet");
 })();
