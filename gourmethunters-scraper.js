@@ -280,6 +280,7 @@ const productDetails = async (urls) => {
   // google sheet setup
   log("google sheet");
   const sheet = new Sheet();
+  log("loadCredentials");
   await sheet.loadCredentials();
 
   // //   await sheet.headerValues(["hello", "email"]);
@@ -288,8 +289,10 @@ const productDetails = async (urls) => {
 
   date = new Date().getMinutes();
 
+  log("rawIndex");
   rawIndex = await sheet.addSheet(`gourmethunters ${date}`, fields);
 
+  log("addRows");
   await sheet.addRows(allProductDetails, rawIndex);
   log("saving to google sheet");
 })();
