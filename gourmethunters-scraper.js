@@ -75,7 +75,7 @@ const getLinks = async (url, i) => {
 };
 
 const getAllLinks = async (url) => {
-  let i = 1;
+  let i = 222;
   let allLinks = [];
 
   while (true) {
