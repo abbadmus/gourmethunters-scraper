@@ -4,7 +4,7 @@ const Sheet = require("./google-conn");
 const _ = require("lodash");
 const fs = require("fs").promises;
 const sleep = require("util").promisify(setTimeout);
-// const moment = require("moment");
+// require("dotenv").config();
 
 log = console.log;
 
@@ -267,13 +267,15 @@ const productDetails = async (urls) => {
 };
 
 (async function () {
+  log(process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
+
   const allLinks = await eachCategory(categoryToBeScrape);
 
   const allProductDetails = await productDetails(allLinks);
 
-  jsonallProductDetails = JSON.stringify(allProductDetails);
+  // jsonallProductDetails = JSON.stringify(allProductDetails);
 
-  await fs.writeFile("./test.json", jsonallProductDetails, "utf8");
+  // await fs.writeFile("./test.json", jsonallProductDetails, "utf8");
 
   //   log(allProductDetails);
 
