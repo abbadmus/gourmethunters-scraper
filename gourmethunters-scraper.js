@@ -267,7 +267,11 @@ const productDetails = async (urls) => {
 };
 
 (async function () {
-  log(process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
+  // google sheet setup
+  log("google sheet");
+  const sheet = new Sheet();
+  log("loadCredentials");
+  await sheet.loadCredentials();
 
   const allLinks = await eachCategory(categoryToBeScrape);
 
@@ -278,12 +282,6 @@ const productDetails = async (urls) => {
   // await fs.writeFile("./test.json", jsonallProductDetails, "utf8");
 
   //   log(allProductDetails);
-
-  // google sheet setup
-  log("google sheet");
-  const sheet = new Sheet();
-  log("loadCredentials");
-  await sheet.loadCredentials();
 
   // //   await sheet.headerValues(["hello", "email"]);
 
