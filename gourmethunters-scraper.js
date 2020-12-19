@@ -278,6 +278,7 @@ const productDetails = async (urls) => {
   //   log(allProductDetails);
 
   // google sheet setup
+  log("google sheet");
   const sheet = new Sheet();
   await sheet.loadCredentials();
 
